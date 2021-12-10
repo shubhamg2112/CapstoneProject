@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Sentiment Analysis</title>
+    
+    <!-- Required meta tags -->
+    <!-- <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
+
+    <!-- Bootstrap CSS -->
+    
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"> -->
+    <!-- <link rel="stylesheet" href="css/style.css"> -->
+    <link rel="stylesheet" href="css/main.css">  
+  </head>
+  <body>
+    <div class="perspective effect-rotate-left">
+      <div class="container"><div class="outer-nav--return"></div>
+        <div id="viewport" class="l-viewport">
+          <div class="l-wrapper">
+              <header class="header">
+                <a class="header--logo" href="index.html">
+                  <img src="img/logo.jpg" alt="sentimentanalysis">
+                  <p>Sentiment Analysis</p>
+                </a>
+                <!-- <button class="header--cta cta">About Us</button> -->
+                <div class="header--nav-toggle">
+                  <span></span>
+                </div>
+              </header>
+              <nav class="l-side-nav">
+                <ul class="side-nav">
+                  <li class="is-active"><span>Home</span></li>
+                  <li><span>Instructions</span></li>
+                  <li><span>Upload File</span></li>
+                  <li><span>Classification Report</span></li>
+                  <li><span>Our Implementation</span></li>
+                  <!-- <li><span>About us</span></li> -->
+                </ul>
+              </nav>
+                <ul class="l-main-content main-content">
+                  <li class="l-section section section--is-active">
+                    <div class="intro">
+                      <div class="intro--banner">
+                        <img src="img/cover2.jpg" style="height: 80%; width: 100%; float: right;" alt="Welcome">
+                      </div>
+                      <div class="intro--options">
+                        <a href="index.html">
+                          <h3>Jeenal Shah</h3>
+                          <p>jeenal2416@gmail.com</p>
+                        </a>
+                        <a href="index.html">
+                          <h3>Shubham Gupta</h3>
+                          <p>shubhamgupta333@hotmail.com</p>
+                        </a>
+                        <a href="index.html">
+                          <h3>Prachi Bansal</h3>
+                          <p>bansalprachi53@gmail.com</p>
+                        </a>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="l-section section">
+                    <div class="work">
+                      <h2>Instructions</h2>
+                      <ul>
+                        <li>
+                          <p>Sentiment Analysis is the process of determining whether a piece of writing (tweets, reviews, etc.) is positive, negative or neutral.</p>                          
+                        </li>
+                        <li>
+                          <p>For knowing the accurate result of the sentiments, one need to upload a comma-separated values (CSV) file 
+                            format only, in the Uploads Section  (03 menu option).</p>
+                        </li>
+                        <li>
+                          <p>In CSV, each record consists of one or more fields which are separated by commas. Therefore, before uploading any csv files one should always check 
+                            for the format of the labels carefully. It must be in this (,Sentiment,Tweet) format.</p>
+                        </li>
+                        <li>
+                          <p>After the file is uploaded, one can view the classification report which consist of precision, recall,
+                             f1-score and support for the following values - Positive, Negative and Neutral.</p>
+                        </li>
+                        <li>
+                          <p>One can click on Graphs Section(04 menu option) to view the Graph generated with different Twitter Sentiments.</p>
+                        </li>
+                      </ul>
+                      
+                    </div>
+                  </li>
+                  <li class="l-section section">
+                    <div class="about">
+                      <div class="about--banner">
+                        <h2>CSV<br>File Upload<br></h2>
+                        <div class="about--options">
+                          <div id="FileUpload">
+                            <div class="wrapper">
+                              <form method="POST" enctype="multipart/form-data" id="upload_form" action="#">
+                                <div class="upload">
+                                  <p> <input class="upload__button" id="uploaded_file" name="uploaded_file" type ="file"></p>
+                                </div>
+                                <input type="submit" value="UPLOAD" />
+                              </form>
+                            </div>
+                            <div>
+                              <div id="loading" style="display: none;">
+                                <img src='loading.gif' />
+                              </div>
+                              <div id="demo">
+                    
+                              </div>
+                              
+                            </div>
+                        </div>
+                        
+                        <div class="modal">
+                          <div class="chart-container">
+                            <canvas id="bar-chartcanvas1" width="350" height="350" style="display:block; box-sizing:border-box; height:200; width:200;"></canvas>
+                          </div> 
+                        </div>
+                        </div>
+                        
+                      </div>
+                      
+                    </div>
+                  </li>
+                  <li class="l-section section">
+                    <div class="work classification">
+                      <ul>
+                        <li>
+                          <h4>Accuracy</h4>
+                          <p><strong style = "font-style: italic;">How often is the classifier correct? - Accuracy</strong><br/>
+                            Accuracy = (True Positives + True Negatives) / (Total number of Predictions)</p>                          
+                        </li>
+                        <li>
+                          <h4>Precision, Recall and F1-Score</h4>
+                          <p><strong style = "font-style: italic;">When it predicts the positive result, how often is it correct? - Precision</strong>
+                          <br/>The number of positive identifications that actually belong to the positive class is known as precision.
+                            Precision = True Positive / ( True Positive + False Positive )</p>
+
+                          <p><strong style = "font-style: italic;">When it is actually the positive result, how often does it predict correctly? - Recall</strong>
+                          <br/>The number of positive predictions that are identified correctly out of all positive examples. In other words, 
+                            Recall is used when the goal is to limit the number of false negatives (FN).<br/>
+                            Precision = True Positive / ( True Positive + False Negative )</p>
+                          
+                          <p><strong style = "font-style: italic;">It is the harmonic mean of precision and recall. - F1-Score</strong><br/> 
+                           F1-Score = 2 * ( precision * recall ) / ( precision + recall )</p>
+                        </li>
+                        <li>
+                          <h4>Support</h4>
+                          <p>Support is the number of actual occurrences of the class in the particular dataset. </p>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li class="l-section section">
+                    <div class="contact">
+                      <div class="contact--lockup">
+                        <div class="modal--information">
+                          <h1>Our Implementation.</h1>
+                          <a href="tweets_tagged_new_format.csv" target="_self"><button id="download-csv">Download CSV File</button></a>
+                          <img src = "img/report.jpeg" alt="classification report">
+                        </div>  
+                        <div class="modal">
+                            <div class="chart-container" style ="height:400;">
+                              <canvas id="bar-chartcanvas" width="350" height="400" style="display:block; box-sizing:border-box; height:200; width:200;"></canvas>
+                            </div> 
+                        </div>
+                        </div>
+                        </div>
+                        </li>
+
+                </ul>
+              </nav>
+          </div>
+        </div>
+      </div>
+      <ul class="outer-nav">
+        <li class="is-active">Home</li>
+        <li>Instructions</li>
+        <li>Upload File</li>
+        <li>Classification Report</li>
+        <li>Our Implementation</li>
+      </ul>
+    </div>
+    <!-- <h1>Python Project</h1>
+    <div id="FileUpload">
+        <div class="wrapper">
+          <form method="POST" enctype="multipart/form-data" id="upload_form" action="#">
+            <div class="upload">
+              <p> <input class="upload__button" id="uploaded_file" name="uploaded_file" type ="file"></p>
+            </div>
+            <input type="submit" value="UPLOAD" />
+          </form>
+        </div>
+        <div id="demo"></div>
+    </div>
+
+ 
+
+    <div class="chart-container">
+      <canvas id="bar-chartcanvas"></canvas>
+    </div>
+
+     -->
+
+    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+    <script src="js/jquery-2.2.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.1.0/chart.min.js"></script>
+    <script src="js/bar.js"></script>
+    <script src="js/bar-dynamic.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>    
+    <script src="js/app.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery-2.2.4.min.js"><\/script>')</script>
+    <script src="js/functions-min.js"></script>
+  </body>
+</html>
+
+
